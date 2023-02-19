@@ -27,6 +27,20 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     f(x)=x^2*-1.0+x^1*-0.0+x^0*-2.0
     >>> print(points_to_polynomial([[1, 5], [2, 2], [3, 9]]))
     f(x)=x^2*5.0+x^1*-18.0+x^0*18.0
+
+    New test cases:
+    >>> print(points_to_polynomial([[1, 1]]))
+    x=1
+    >>> print(points_to_polynomial([[1, 1], [1, 1]]))
+    Traceback (most recent call last):
+        ...
+    ValueError: The program cannot work out a fitting polynomial.
+    >>> print(points_to_polynomial([[1, 1], [2, 2], [1, 2]]))
+    Traceback (most recent call last):
+        ...
+    ValueError: The program cannot work out a fitting polynomial.
+    >>> print(points_to_polynomial([[1, 2E100], [2, 2E-10]]))
+    f(x)=x^1*-2*10^100+x^0*4*10^100
     """
     if len(coordinates) == 0 or not all(len(pair) == 2 for pair in coordinates):
         raise ValueError("The program cannot work out a fitting polynomial.")
@@ -92,8 +106,9 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     solved = "f(x)="
 
     while count < x:
-        remove_e: list[str] = solution[count].split("E")
+        remove_e: list[str] = solution[count].split("e+" or "e-")
         if len(remove_e) > 1:
+            # Not tested
             solution[count] = f"{remove_e[0]}*10^{remove_e[1]}"
         solved += f"x^{x - (count + 1)}*{solution[count]}"
         if count + 1 != x:
@@ -104,13 +119,22 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
 
 
 if __name__ == "__main__":
-    print(points_to_polynomial([]))
-    print(points_to_polynomial([[]]))
-    print(points_to_polynomial([[1, 0], [2, 0], [3, 0]]))
-    print(points_to_polynomial([[1, 1], [2, 1], [3, 1]]))
-    print(points_to_polynomial([[1, 3], [2, 3], [3, 3]]))
-    print(points_to_polynomial([[1, 1], [2, 2], [3, 3]]))
-    print(points_to_polynomial([[1, 1], [2, 4], [3, 9]]))
-    print(points_to_polynomial([[1, 3], [2, 6], [3, 11]]))
-    print(points_to_polynomial([[1, -3], [2, -6], [3, -11]]))
-    print(points_to_polynomial([[1, 5], [2, 2], [3, 9]]))
+    # print(points_to_polynomial([]))
+    # print(points_to_polynomial([[]]))
+    # print(points_to_polynomial([[1, 0], [2, 0], [3, 0]]))
+    # print(points_to_polynomial([[1, 1], [2, 1], [3, 1]]))
+    # print(points_to_polynomial([[1, 3], [2, 3], [3, 3]]))
+    # print(points_to_polynomial([[1, 1], [2, 2], [3, 3]]))
+    # print(points_to_polynomial([[1, 1], [2, 4], [3, 9]]))
+    # print(points_to_polynomial([[1, 3], [2, 6], [3, 11]]))
+    # print(points_to_polynomial([[1, -3], [2, -6], [3, -11]]))
+    # print(points_to_polynomial([[1, 5], [2, 2], [3, 9]]))
+
+    # New test cases:
+    # print(points_to_polynomial([[1, 1]]))
+    # print(points_to_polynomial([[1, 1], [1, 1]]))
+    # print(points_to_polynomial([[1, 1], [2, 2], [1, 2]]))
+    # print(points_to_polynomial([[1, 2E100], [2, 2E-10]]))
+
+    import doctest
+    doctest.testmod()
