@@ -108,7 +108,6 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     while count < x:
         remove_e: list[str] = solution[count].split("e+" or "e-")
         if len(remove_e) > 1:
-            # Not tested
             solution[count] = f"{remove_e[0]}*10^{remove_e[1]}"
         solved += f"x^{x - (count + 1)}*{solution[count]}"
         if count + 1 != x:
