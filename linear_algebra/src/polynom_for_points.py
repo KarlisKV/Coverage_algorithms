@@ -1,3 +1,8 @@
+flags = [False]*24
+
+def set_flag(i):
+    flags[i] = True
+
 def points_to_polynomial(coordinates: list[list[int]]) -> str:
     """
     coordinates is a two dimensional matrix: [[x, y], [x, y], ...]
@@ -28,18 +33,39 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     >>> print(points_to_polynomial([[1, 5], [2, 2], [3, 9]]))
     f(x)=x^2*5.0+x^1*-18.0+x^0*18.0
     """
+
     if len(coordinates) == 0 or not all(len(pair) == 2 for pair in coordinates):
+        # Branch 0
+        set_flag(0)
         raise ValueError("The program cannot work out a fitting polynomial.")
+    else:
+        # Branch 1
+        set_flag(1)
 
     if len({tuple(pair) for pair in coordinates}) != len(coordinates):
+        # Branch 2
+        set_flag(2)
         raise ValueError("The program cannot work out a fitting polynomial.")
+    else:
+        # Branch 3
+        set_flag(3)
 
     set_x = {x for x, _ in coordinates}
     if len(set_x) == 1:
+        # Branch 4
+        set_flag(4)
         return f"x={coordinates[0][0]}"
+    else:
+        # Branch 5
+        set_flag(5)
 
     if len(set_x) != len(coordinates):
+        # Branch 6
+        set_flag(6)
         raise ValueError("The program cannot work out a fitting polynomial.")
+    else:
+        # Branch 7
+        set_flag(7)
 
     x = len(coordinates)
 
@@ -47,10 +73,14 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     matrix: list[list[float]] = []
     # put the x and x to the power values in a matrix
     while count_of_line < x:
+        # Branch 8
+        set_flag(8)
         count_in_line = 0
         a = coordinates[count_of_line][0]
         count_line: list[float] = []
         while count_in_line < x:
+            # Branch 9
+            set_flag(9)
             count_line.append(a ** (x - (count_in_line + 1)))
             count_in_line += 1
         matrix.append(count_line)
@@ -60,20 +90,38 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     # put the y values into a vector
     vector: list[float] = []
     while count_of_line < x:
+        # Branch 10
+        set_flag(10)
         vector.append(coordinates[count_of_line][1])
         count_of_line += 1
 
     count = 0
 
     while count < x:
+        # Branch 11
+        set_flag(11)
         zahlen = 0
         while zahlen < x:
+            # Branch 12
+            set_flag(12)
             if count == zahlen:
+                # Branch 13
+                set_flag(13)
                 zahlen += 1
+            else:
+                # Branch 14
+                set_flag(14)
             if zahlen == x:
+                # Branch 15
+                set_flag(15)
                 break
+            else:
+                # Branch 16
+                set_flag(16)
             bruch = matrix[zahlen][count] / matrix[count][count]
             for counting_columns, item in enumerate(matrix[count]):
+                # Branch 17
+                set_flag(17)
                 # manipulating all the values in the matrix
                 matrix[zahlen][counting_columns] -= item * bruch
             # manipulating the values in the vector
@@ -85,6 +133,8 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     # make solutions
     solution: list[str] = []
     while count < x:
+        # Branch 18
+        set_flag(18)
         solution.append(str(vector[count] / matrix[count][count]))
         count += 1
 
@@ -92,25 +142,47 @@ def points_to_polynomial(coordinates: list[list[int]]) -> str:
     solved = "f(x)="
 
     while count < x:
+        # Branch 19
+        set_flag(19)
         remove_e: list[str] = solution[count].split("E")
         if len(remove_e) > 1:
+            # Branch 20
+            set_flag(20)
             solution[count] = f"{remove_e[0]}*10^{remove_e[1]}"
+        else:
+            # Branch 21
+            set_flag(21)
         solved += f"x^{x - (count + 1)}*{solution[count]}"
         if count + 1 != x:
+            # Branch 22
+            set_flag(22)
             solved += "+"
+        else:
+            # Branch 23
+            set_flag(23)
         count += 1
 
     return solved
 
 
 if __name__ == "__main__":
-    print(points_to_polynomial([]))
-    print(points_to_polynomial([[]]))
-    print(points_to_polynomial([[1, 0], [2, 0], [3, 0]]))
-    print(points_to_polynomial([[1, 1], [2, 1], [3, 1]]))
-    print(points_to_polynomial([[1, 3], [2, 3], [3, 3]]))
-    print(points_to_polynomial([[1, 1], [2, 2], [3, 3]]))
-    print(points_to_polynomial([[1, 1], [2, 4], [3, 9]]))
-    print(points_to_polynomial([[1, 3], [2, 6], [3, 11]]))
-    print(points_to_polynomial([[1, -3], [2, -6], [3, -11]]))
-    print(points_to_polynomial([[1, 5], [2, 2], [3, 9]]))
+    # print(points_to_polynomial([]))
+    # print(points_to_polynomial([[]]))
+    # print(points_to_polynomial([[1, 0], [2, 0], [3, 0]]))
+    # print(points_to_polynomial([[1, 1], [2, 1], [3, 1]]))
+    # print(points_to_polynomial([[1, 3], [2, 3], [3, 3]]))
+    # print(points_to_polynomial([[1, 1], [2, 2], [3, 3]]))
+    # print(points_to_polynomial([[1, 1], [2, 4], [3, 9]]))
+    # print(points_to_polynomial([[1, 3], [2, 6], [3, 11]]))
+    # print(points_to_polynomial([[1, -3], [2, -6], [3, -11]]))
+    # print(points_to_polynomial([[1, 5], [2, 2], [3, 9]]))
+
+    import doctest
+    doctest.testmod()
+
+    reached = 0
+    for i in range(24):
+        print("branch nr", i, flags[i])
+        if flags[i]:
+            reached += 1
+    print("total coverage", reached/24*100, "%")
