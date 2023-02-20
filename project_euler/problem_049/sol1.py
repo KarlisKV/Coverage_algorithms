@@ -57,22 +57,18 @@ def is_prime(number: int) -> bool:
 
     if 1 < number < 4:
         # 2 and 3 are primes
-        # branch 0 
-        checker(0)
+      
         return True
     elif number < 2 or number % 2 == 0 or number % 3 == 0:
         # Negatives, 0, 1, all even numbers, all multiples of 3 are not primes
-        #branch 1
-        checker(1)
+        
         return False
 
     # All primes number are in format of 6k +/- 1
     for i in range(5, int(math.sqrt(number) + 1), 6):
-        # branch 2
-        checker(2)
+      
         if number % i == 0 or number % (i + 2) == 0:
-            # banch 3
-            checker(3)
+            
             return False
     return True
 
@@ -90,21 +86,17 @@ def search(target: int, prime_list: list) -> bool:
 
     left, right = 0, len(prime_list) - 1
     while left <= right:
-        # branch 17
-        checker(17)
+        
         middle = (left + right) // 2
         if prime_list[middle] == target:
-            # branch 18
-            checker(18)
+           
             return True
         elif prime_list[middle] < target:
             left = middle + 1
-             # branch 19
-            checker(19)
+            
         else:
             right = middle - 1
-             # branch 20
-            checker(20)
+            
 
     return False
 
@@ -119,68 +111,69 @@ def solution():
     candidates = []
 
     for number in prime_list:
-        # branch
-        checker(4)
+        # branch 0
+        brachsett(0)
+
         tmp_numbers = []
 
         for prime_member in permutations(list(str(number))):
             prime = int("".join(prime_member))
-            # branch 5
-            checker(5)
+            # branch 1
+            brachsett(1)
             if prime % 2 == 0:
-                # branch 6
-                checker(6)
+                # branch 2
+                brachsett(2)
                 continue
 
             if search(prime, prime_list):
-                # branch 7
-                checker(7)
+                # branch 3
+                brachsett(3)
                 tmp_numbers.append(prime)
 
         tmp_numbers.sort()
         if len(tmp_numbers) >= 3:
-            # branch 8
-            checker(8)
+            # branch 4
+            brachsett(4)
             candidates.append(tmp_numbers)
 
     passed = []
     for candidate in candidates:
         length = len(candidate)
         found = False
-        #branch 9
-        checker(9)
+        #branch 5
+        brachsett(5)
         for i in range(length):
-            # branch 10
-            checker(10)
+            # branch 6
+            brachsett(6)
             for j in range(i + 1, length):
-                # branch 11
-                checker(11)
+                # branch 7
+                brachsett(7)
                 for k in range(j + 1, length):
-                    # branch 12
-                    checker(12)
+                    # branch 8
+                    brachsett(8)
                     if (
                         abs(candidate[i] - candidate[j])
                         == abs(candidate[j] - candidate[k])
                         and len({candidate[i], candidate[j], candidate[k]}) == 3
                     ):
-                    # branch 
-                        checker(13)
+                    # branch 9
+                        brachsett(9)
                         passed.append(
                             sorted([candidate[i], candidate[j], candidate[k]])
                         )
                         found = True
 
                     if found:
-                        #branch 14
-                        checker(14)
+                        #branch 10
+                        brachsett(10)
                         break
                 if found:
-                    # branch 15
-                    checker(15)
+                    # branch 11
+                    brachsett(11)
                     break
             if found:
-                # branch 16
-                checker(16)
+                # branch 12
+                brachsett(12)
                 break
 
     answer = set()
@@ -189,17 +182,18 @@ def solution():
 
     return max(int(x) for x in answer)
 
+
+
 check =[0]*21
-def checker(i):
+def brachsett(i):
     check[i] = 1 
 
 if __name__ == "__main__":
-   # print(solution())
-    import doctest
-    doctest.testmod()
+    print(solution())
+    
 
     counter = 0
-    for i in range(21):
-        if check[i]:
+    for i in range(13):
+        if check[i]==1:
             counter += 1
-    print(counter/21*100)
+    print(counter/13*100)
