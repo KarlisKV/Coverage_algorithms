@@ -125,7 +125,7 @@ def solution():
 
         for prime_member in permutations(list(str(number))):
             prime = int("".join(prime_member))
-            #branch 5
+            # branch 5
             checker(5)
             if prime % 2 == 0:
                 # branch 6
@@ -192,7 +192,7 @@ def solution():
 check =[0]*21
 def checker(i):
     check[i] = 1 
-    
+
 if __name__ == "__main__":
    # print(solution())
     import doctest
