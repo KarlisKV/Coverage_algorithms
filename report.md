@@ -1,4 +1,4 @@
-# Report for assignment 3
+# Report for assignment 3 Group 28
 
 This is a template for your report. You are free to modify it as needed.
 It is not required to use markdown for your report either, but the report
@@ -73,15 +73,36 @@ Yes, the project ran as documented without problems.
 
 ## Refactoring
 
-### Function 1
+### polynom_for_points
 
 Plan for refactoring complex code:
 
+In order to decrease the complexity, the function can be split into smaller subfunctions.
+There are four areas of the code with high complexity, that could be moved outside the function to helper functions. These areas are:
+* Adding the x and x to the power of values to a matrix.
+* Adding the y values to a vector.
+* Manipulation the matrix.
+* Constructing the solutions
+
 Estimated impact of refactoring (lower CC, but other drawbacks?).
+
+The refactoring should decrease the cyclomatic complexity and the length of the function. Otherwise, there would not be any impact on the code.
 
 Carried out refactoring (optional, P+):
 
-git diff ...
+Four helper functions was added to decrease the CC of the code, one for each of the areas listed above. 
+* Adding the x and x to the power of values to a matrix.
+    * Moved to `add_x_values(coordinates, x) -> matrix`
+* Adding the y values to a vector.
+    * Moved to `add_y_values(coordinates, x) -> vector`
+* Manipulation the matrix.
+    * Moved to `manipulate_matrix(matrix, vector, x) -> matrix`
+* Constructing the solutions
+    * Moved to `make_solutions(matrix, vector, x) -> solved`
+
+The refactoring can be found [here](https://github.com/KarlisKV/Coverage_algorithms/blob/8-refactor-polynom_for_points/linear_algebra/src/polynom_for_points.py) on lines: 1-96
+
+The refactoring decreased the CC from 21 to 9, which gives a 57% decrease.
 
 ### Function 2
 
@@ -126,7 +147,7 @@ We used coverage.py as a coverage tool. It was easy to use on our project, and w
 
 ### Your own coverage tool
 
-#### **Function 1** 
+#### **polynom_for_points** 
 
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements.
@@ -134,10 +155,13 @@ gather coverage measurements.
 The patch is probably too long to be copied here, so please add
 the git command that is used to obtain the patch instead:
 
-git diff ...
+The DIY coverage tool can be found [here](https://github.com/KarlisKV/Coverage_algorithms/blob/6-manual-coverage-measurement-for-polynom_for_points/linear_algebra/src/polynom_for_points.py)
 
 What kinds of constructs does your tool support, and how accurate is
 its output?
+
+* The DIY coverage tool supports if/else statements and for/while loops, but *not* ternary operators
+* The DIY coverage tool measuread a branch coverage of 83.3%, while the automated tool measuread branch coverage of 93 %. So the results were in the same range, but not exactly the same.
 
 #### **Function 2**
 
@@ -178,7 +202,21 @@ its output?
 
 ### Evaluation
 
-### Function 1
+#### **polynom_for_points**
+
+1. How detailed is your coverage measurement?
+
+   The coverage measurement gives information about which branches are covered or not, and calculates the percentage. It does not provide more detailed information than that.
+
+2. What are the limitations of your own tool?
+
+   The tool is limited by not taking ternary operations into account. Furthermore, it is not modular - if new branches are added to the code, the tool will not take these into account unless modifying the tool.
+
+3. Are the results of your tool consistent with existing coverage tools?
+
+   The DIY tool measured a lower coverage than the automated tool (83% vs 93%), because it does not take all branch types into account.
+
+#### **Function 2**
 
 1. How detailed is your coverage measurement?
 
@@ -186,7 +224,7 @@ its output?
 
 3. Are the results of your tool consistent with existing coverage tools?
 
-### Function 2
+#### **Function 3**
 
 1. How detailed is your coverage measurement?
 
@@ -194,15 +232,7 @@ its output?
 
 3. Are the results of your tool consistent with existing coverage tools?
 
-### Function 3
-
-1. How detailed is your coverage measurement?
-
-2. What are the limitations of your own tool?
-
-3. Are the results of your tool consistent with existing coverage tools?
-
-### Function 4
+#### **Function 4**
 
 1. How detailed is your coverage measurement?
 
@@ -212,19 +242,33 @@ its output?
 
 ## Coverage improvement
 
-### Function 1
+### polynom_for_points
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+The requirements not met by the original test cases are:
+* Branch 2:
+   * Do not reach branch 0
+   * The input satisfies: `len({tuple(pair) for pair in coordinates}) != len(coordinates)`
+* Branch 4:
+   * Do not reach branch 0 or 2
+   * The input satisfies: `len(set_x) == 1`
+* Branch 6:
+   * Do not reach branch 0, 2 or 4
+   * The input satisfies: `len(set_x) != len(coordinates)`
+* Branch 20:
+   * Do not reach branch 0, 2, 4 or 6
+   * The input satisfies `len(remove_e) > 1`
 
-Report of new coverage: [link]
+Report of old / new coverage can be found [here](https://github.com/KarlisKV/Coverage_algorithms/blob/7-coverage-improvement-for-polynom_for_points/coverage_improvement.md)
 
 Test cases added:
 
-git diff ...
+The added test cases can be found [here](https://github.com/KarlisKV/Coverage_algorithms/blob/7-coverage-improvement-for-polynom_for_points/linear_algebra/src/polynom_for_points.py) on lines 36-48. With these new test cases added, the requirements listed above are satisfied.
 
 Number of test cases added: two per team member (P) or at least four (P+).
+
+Four test cases were added (P+).
 
 ### Function 2
 
@@ -304,3 +348,11 @@ One of our group members, Olivia Aronsson, was not able to participate in the pr
 * Maegan Peralta:
 * Karlis Kristofers Velins:
 * Jennifer Larsson: 
+   * Manual complexity measurement for `inverse_of_matrix`
+   * DIY coverage measurement for `polynom_for_points`
+   * Four new test cases for `polynom_for_points`
+   * Refactoring `polynom_for_points`
+   * Going for P+, should meet requirements 1, 2 and 3
+      1. Added four new test cases
+      2. Used systematic commit messages and issues
+      3. Refactored a function and decreased CC by more than 35%.
