@@ -41,16 +41,17 @@ Yes, the project ran as documented without problems.
 | 7 | ./graphs/a_star.py:12 | search | 20 |
 | 8 | ./matrix/inverse_of_matrix.py:8: |  inverse_of_matrix | 20 |
 | 9 | ./data_structures/binary_tree/red_black_tree.py:155 | remove | 19 |
-| 10 | ./data_structures/heap/binomial_heap.py:131 | merge_heaps | 19 |
+| 10 | ./data_structures/binary_tree/red_black_tree.py:123 | _insert_repair | 17 |
    
    * Did all methods (tools vs. manual count) get the same result?
-      * The functions inverse_of_matrix and insert_repair got the same result with the automated tool and the manual count.
-      * The function solution did not get the same result with the automated tool and the manual count, with a difference of 1 CC.
+      * The functions inverse_of_matrix got the same result with the automated tool and the manual count.
+      * The function solution and _insert_repair did not get the same result with the automated tool and the manual count, with a difference of 1 CC.
+      * the function remove had a CC of 21 instead of 19 by manual count
    * Are the results clear?
       * Yes, the results are clear.
 
 2. Are the functions just complex, or also long?
-* The function insert_repair is just complex, but quite short.
+* The function insert_repair is just complex, but quite short. This is since it is also recursive and acts also as a helper function to the insert function, the same can be said for the function remove since these 2  functions are just a part of a class
 * The functions solution and inverse_of_matrix are both complex and long.
 
 3. What is the purpose of the functions?
@@ -58,6 +59,8 @@ Yes, the project ran as documented without problems.
    * The purpose of the function is to get the inverse of a 2x2 or 3x3 matrix.
 * insert_repair
    * The purpose of the functions is to balance out the tree when a new node is inserted.
+* remove
+  * The purpose of this function is to be able to remove a node from the red-black tree correctly
 * solution
    * The function is to find a 12-digit number that meets two conditions: 
       1. It is an arithmetic sequence of three prime numbers. 
@@ -66,9 +69,9 @@ Yes, the project ran as documented without problems.
 4. Are exceptions taken into account in the given measurements?
    
    No, neither the manual count or the automated tool takes exceptions into account.
-
+    It's also worth noting that some of the functions like remove and _insert_repair don't have any exceptions
 5. Is the documentation clear w.r.t. all the possible outcomes?
-
+    
    Yes, the documentation is clear and describes all possible outcomes.
 
 ## Refactoring
@@ -104,11 +107,22 @@ The refactoring can be found [here](https://github.com/KarlisKV/Coverage_algorit
 
 The refactoring decreased the CC from 21 to 9, which gives a 57% decrease.
 
-### Function 2
+### _insert_repair
 
 Plan for refactoring complex code:
 
+* Combining the first two if statements with an elif.
+
+* Using Boolean logic to combine several conditional statements and reduce the number of branches.
+
+* *Reassigning self to the left or right child after rotating, if necessary. This avoids redundant code for the left and right cases.
+
+* Assigning colors to multiple nodes in a single line, using tuple unpacking.
+
 Estimated impact of refactoring (lower CC, but other drawbacks?).
+
+This will reduce the cc but the issue is that the code will be way harder to read. Right now it is already difficult and it doesn't make sense to split the conditions amongst the various functions
+to reduce complexity, it just is a very complex binary tree operation that needs these branches everywhere. Also adding these changes would make the code more error-prone.
 
 Carried out refactoring (optional, P+):
 
@@ -143,7 +157,8 @@ Document your experience in using a "new"/different coverage tool.
 How well was the tool documented? Was it possible/easy/difficult to
 integrate it with your build environment?
 
-We used coverage.py as a coverage tool. It was easy to use on our project, and was easy to understand and properly documented.
+We used coverage.py as a coverage tool since we used Python as our coding language and it was the one that was recommended.
+It was easy to use on our project, and was easy to understand and properly documented.
 
 ### Your own coverage tool
 
@@ -163,7 +178,7 @@ its output?
 * The DIY coverage tool supports if/else statements and for/while loops, but *not* ternary operators
 * The DIY coverage tool measuread a branch coverage of 83.3%, while the automated tool measuread branch coverage of 93 %. So the results were in the same range, but not exactly the same.
 
-#### **Function 2**
+#### **_insert_repair**
 
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements.
@@ -216,14 +231,20 @@ its output?
 
    The DIY tool measured a lower coverage than the automated tool (83% vs 93%), because it does not take all branch types into account.
 
-#### **Function 2**
+#### **_insert_repair**
 
 1. How detailed is your coverage measurement?
 
+It checks for all if, elif else statements in the function, since those are the only ones that appear for this specific function 
+
 2. What are the limitations of your own tool?
+
+The tool requires manual input which makes it very error-prone. For a more complex function it is also not very efficient and takes a lot of work.
 
 3. Are the results of your tool consistent with existing coverage tools?
 
+I counted 16 branches but as I undestand the CC is the nr. of branches + 1 which is 17 so that matches the 17 that the automated lizard tool produced. For coverage I got 87.5% 
+and the overall class got 79% coverage since it had other methods. My manual tool got a coverage for the existing tests for 87.5% 
 #### **Function 3**
 
 1. How detailed is your coverage measurement?
