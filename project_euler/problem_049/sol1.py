@@ -29,6 +29,7 @@ import math
 from itertools import permutations
 
 
+
 def is_prime(number: int) -> bool:
     """Checks to see if a number is a prime in O(sqrt(n)).
 
@@ -56,14 +57,22 @@ def is_prime(number: int) -> bool:
 
     if 1 < number < 4:
         # 2 and 3 are primes
+        # branch 0 
+        checker(0)
         return True
     elif number < 2 or number % 2 == 0 or number % 3 == 0:
         # Negatives, 0, 1, all even numbers, all multiples of 3 are not primes
+        #branch 1
+        checker(1)
         return False
 
     # All primes number are in format of 6k +/- 1
     for i in range(5, int(math.sqrt(number) + 1), 6):
+        # branch 2
+        checker(2)
         if number % i == 0 or number % (i + 2) == 0:
+            # banch 3
+            checker(3)
             return False
     return True
 
@@ -81,13 +90,21 @@ def search(target: int, prime_list: list) -> bool:
 
     left, right = 0, len(prime_list) - 1
     while left <= right:
+        # branch 17
+        checker(17)
         middle = (left + right) // 2
         if prime_list[middle] == target:
+            # branch 18
+            checker(18)
             return True
         elif prime_list[middle] < target:
             left = middle + 1
+             # branch 19
+            checker(19)
         else:
             right = middle - 1
+             # branch 20
+            checker(20)
 
     return False
 
@@ -98,48 +115,72 @@ def solution():
     >>> solution()
     296962999629
     """
-    prime_list = [n for n in range(1001, 10000, 2) if is_prime(n)]
+    prime_list = [n for n in range(1001, 10000, 2) if is_prime(n) ]
     candidates = []
 
     for number in prime_list:
+        # branch
+        checker(4)
         tmp_numbers = []
 
         for prime_member in permutations(list(str(number))):
             prime = int("".join(prime_member))
-
+            #branch 5
+            checker(5)
             if prime % 2 == 0:
+                # branch 6
+                checker(6)
                 continue
 
             if search(prime, prime_list):
+                # branch 7
+                checker(7)
                 tmp_numbers.append(prime)
 
         tmp_numbers.sort()
         if len(tmp_numbers) >= 3:
+            # branch 8
+            checker(8)
             candidates.append(tmp_numbers)
 
     passed = []
     for candidate in candidates:
         length = len(candidate)
         found = False
-
+        #branch 9
+        checker(9)
         for i in range(length):
+            # branch 10
+            checker(10)
             for j in range(i + 1, length):
+                # branch 11
+                checker(11)
                 for k in range(j + 1, length):
+                    # branch 12
+                    checker(12)
                     if (
                         abs(candidate[i] - candidate[j])
                         == abs(candidate[j] - candidate[k])
                         and len({candidate[i], candidate[j], candidate[k]}) == 3
                     ):
+                    # branch 
+                        checker(13)
                         passed.append(
                             sorted([candidate[i], candidate[j], candidate[k]])
                         )
                         found = True
 
                     if found:
+                        #branch 14
+                        checker(14)
                         break
                 if found:
+                    # branch 15
+                    checker(15)
                     break
             if found:
+                # branch 16
+                checker(16)
                 break
 
     answer = set()
@@ -148,6 +189,17 @@ def solution():
 
     return max(int(x) for x in answer)
 
-
+check =[0]*21
+def checker(i):
+    check[i] = 1 
+    
 if __name__ == "__main__":
-    print(solution())
+   # print(solution())
+    import doctest
+    doctest.testmod()
+
+    counter = 0
+    for i in range(21):
+        if check[i]:
+            counter += 1
+    print(counter/21*100)
