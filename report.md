@@ -291,19 +291,66 @@ Number of test cases added: two per team member (P) or at least four (P+).
 
 Four test cases were added (P+).
 
-### Function 2
+### _insert_repair
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+Original coverage has it a 87.5% 
 
-Report of new coverage: [link]
+Report of old coverage: 
+
+branch nr 0 True
+branch nr 1 True
+branch nr 2 True
+branch nr 3 True
+branch nr 4 False
+branch nr 5 False
+branch nr 6 True
+branch nr 7 True
+branch nr 8 True
+branch nr 9 True
+branch nr 10 True
+branch nr 11 True
+branch nr 12 True
+branch nr 13 True
+branch nr 14 True
+branch nr 15 True
+total coverage 87.5 %
+
+Report of new coverage: New coverage has it at 100%
+
+branch nr 0 True
+branch nr 1 True
+branch nr 2 True
+branch nr 3 True
+branch nr 4 True
+branch nr 5 True
+branch nr 6 True
+branch nr 7 True
+branch nr 8 True
+branch nr 9 True
+branch nr 10 True
+branch nr 11 True
+branch nr 12 True
+branch nr 13 True
+branch nr 14 True
+branch nr 15 True
+total coverage 100.0 %
 
 Test cases added:
 
-git diff ...
+I added 2 test cases that 
+1) Check whether condition 4 can be met without reaching condition 5
+* This implies triggering a left-right rotation that makes the branches with set_flag(4) and set_flag(5) code to execute.
+2) Check whether condition 4 and 5 can be met simultaneously
+* This will call set_flag(4) when inserting 9 since it satisfies the condition if self.is_left() 
+and self.parent.is_right(): in _insert_repair(), 
+but it won't call set_flag(5) since there is no right child of 9.
 
-Number of test cases added: two per team member (P) or at least four (P+).
+I want to add here that whilst the coverage was 87.5% initially, it was since there were also insert_remove and delete tests
+that overlapped with the insert test so when I removed those as you'll see in the branch, the coverage dropped to 62.5% which these 2 tests cover now without needing to add back the removed
+previously written tests. 
+
 
 ### Function 3
 
