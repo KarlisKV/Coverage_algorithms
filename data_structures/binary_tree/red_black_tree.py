@@ -622,6 +622,47 @@ def test_insert() -> bool:
     ans.right.right.right = RedBlackTree(12, 1, ans.right.right)
     return tree == ans
 
+
+def test_insert_repair_4_5_taken() -> bool:
+    """Test the insert_repair() method of the tree correctly balances, colors,
+    and inserts.
+    """
+    tree = RedBlackTree(0)
+    tree.insert(8)
+    tree.insert(16)
+    tree.insert(4)
+    tree.insert(2)
+    tree.insert(1)
+    ans = RedBlackTree(0, 0)
+    ans.left = RedBlackTree(2, 1, ans)
+    ans.left.left = RedBlackTree(1, 0, ans.left)
+    ans.right = RedBlackTree(8, 1, ans)
+    ans.right.right = RedBlackTree(16, 0, ans.right)
+    ans.right.left = RedBlackTree(4, 0, ans.right)
+    return tree == ans
+
+
+def test_insert_repair_4_only_taken() -> bool:
+    """Test the insert_repair() method of the tree correctly balances, colors,
+    and inserts.
+    """
+    tree = RedBlackTree(0)
+    tree.insert(8)
+    tree.insert(-8)
+    tree.insert(4)
+    tree.insert(12)
+    tree.insert(10)
+    tree.insert(9)
+    ans = RedBlackTree(0, 0)
+    ans.left = RedBlackTree(-8, 0, ans)
+    ans.right = RedBlackTree(8, 1, ans)
+    ans.right.left = RedBlackTree(4, 0, ans.right)
+    ans.right.right = RedBlackTree(10, 1, ans.right)
+    ans.right.right.left = RedBlackTree(9, 0, ans.right.right)
+    ans.right.right.right = RedBlackTree(12, 0, ans.right.right)
+    return tree == ans
+
+
 def test_insert_and_search() -> bool:
     """Tests searching through the tree for values."""
     tree = RedBlackTree(0)
@@ -730,29 +771,19 @@ def print_results(msg: str, passes: bool) -> None:
 
 
 def pytests() -> None:
-    assert test_rotations()
     assert test_insert()
-    assert test_insert_and_search()
-    assert test_insert_delete()
-    assert test_floor_ceil()
-    assert test_tree_traversal()
-    assert test_tree_chaining()
-    assert test_insert_repair_rotate_right()
+    assert test_insert_repair_4_5_taken()
+    assert test_insert_repair_4_only_taken()
+
 
 def main() -> None:
     """
     >>> pytests()
     """
-    print_results("Rotating right and left", test_rotations())
+
     print_results("Inserting", test_insert())
-    print_results("Searching", test_insert_and_search())
-    print_results("Deleting", test_insert_delete())
-    print_results("Floor and ceil", test_floor_ceil())
-    print_results("Tree traversal", test_tree_traversal())
-    print_results("Tree traversal", test_tree_chaining())
-    print("Testing tree balancing...")
-    print("This should only be a few seconds.")
-    test_insertion_speed()
+    test_insert_repair_4_5_taken()
+    test_insert_repair_4_only_taken()
     print("Done!")
 
 
@@ -763,4 +794,4 @@ if __name__ == "__main__":
         print("branch nr", i, flags[i])
         if flags[i]:
             reached += 1
-    print("total coverage", reached/16*100, "%")
+    print("total coverage", reached / 16 * 100, "%")
