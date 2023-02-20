@@ -6,6 +6,12 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 
+flags = [False] * 16
+
+
+def set_flag(i):
+    flags[i] = True
+
 
 class RedBlackTree:
     """
@@ -22,12 +28,12 @@ class RedBlackTree:
     """
 
     def __init__(
-        self,
-        label: int | None = None,
-        color: int = 0,
-        parent: RedBlackTree | None = None,
-        left: RedBlackTree | None = None,
-        right: RedBlackTree | None = None,
+            self,
+            label: int | None = None,
+            color: int = 0,
+            parent: RedBlackTree | None = None,
+            left: RedBlackTree | None = None,
+            right: RedBlackTree | None = None,
     ) -> None:
         """Initialize a new Red-Black Tree node with the given values:
         label: The value associated with this node
@@ -117,37 +123,53 @@ class RedBlackTree:
     def _insert_repair(self) -> None:
         """Repair the coloring from inserting into a tree."""
         if self.parent is None:
+            set_flag(0)
             # This node is the root, so it just needs to be black
             self.color = 0
         elif color(self.parent) == 0:
+            set_flag(1)
             # If the parent is black, then it just needs to be red
             self.color = 1
         else:
+            set_flag(2)
             uncle = self.parent.sibling
             if color(uncle) == 0:
+                set_flag(3)
                 if self.is_left() and self.parent.is_right():
+                    set_flag(4)
                     self.parent.rotate_right()
                     if self.right:
+                        set_flag(5)
                         self.right._insert_repair()
                 elif self.is_right() and self.parent.is_left():
+                    set_flag(6)
                     self.parent.rotate_left()
                     if self.left:
+                        set_flag(7)
                         self.left._insert_repair()
                 elif self.is_left():
+                    set_flag(8)
                     if self.grandparent:
+                        set_flag(9)
                         self.grandparent.rotate_right()
                         self.parent.color = 0
                     if self.parent.right:
+                        set_flag(10)
                         self.parent.right.color = 1
                 else:
+                    set_flag(11)
                     if self.grandparent:
+                        set_flag(12)
                         self.grandparent.rotate_left()
                         self.parent.color = 0
                     if self.parent.left:
+                        set_flag(13)
                         self.parent.left.color = 1
             else:
+                set_flag(14)
                 self.parent.color = 0
                 if uncle and self.grandparent:
+                    set_flag(15)
                     uncle.color = 0
                     self.grandparent.color = 1
                     self.grandparent._insert_repair()
@@ -212,10 +234,10 @@ class RedBlackTree:
     def _remove_repair(self) -> None:
         """Repair the coloring of the tree that may have been messed up."""
         if (
-            self.parent is None
-            or self.sibling is None
-            or self.parent.sibling is None
-            or self.grandparent is None
+                self.parent is None
+                or self.sibling is None
+                or self.parent.sibling is None
+                or self.grandparent is None
         ):
             return
         if color(self.sibling) == 1:
@@ -226,56 +248,56 @@ class RedBlackTree:
             else:
                 self.parent.rotate_right()
         if (
-            color(self.parent) == 0
-            and color(self.sibling) == 0
-            and color(self.sibling.left) == 0
-            and color(self.sibling.right) == 0
+                color(self.parent) == 0
+                and color(self.sibling) == 0
+                and color(self.sibling.left) == 0
+                and color(self.sibling.right) == 0
         ):
             self.sibling.color = 1
             self.parent._remove_repair()
             return
         if (
-            color(self.parent) == 1
-            and color(self.sibling) == 0
-            and color(self.sibling.left) == 0
-            and color(self.sibling.right) == 0
+                color(self.parent) == 1
+                and color(self.sibling) == 0
+                and color(self.sibling.left) == 0
+                and color(self.sibling.right) == 0
         ):
             self.sibling.color = 1
             self.parent.color = 0
             return
         if (
-            self.is_left()
-            and color(self.sibling) == 0
-            and color(self.sibling.right) == 0
-            and color(self.sibling.left) == 1
+                self.is_left()
+                and color(self.sibling) == 0
+                and color(self.sibling.right) == 0
+                and color(self.sibling.left) == 1
         ):
             self.sibling.rotate_right()
             self.sibling.color = 0
             if self.sibling.right:
                 self.sibling.right.color = 1
         if (
-            self.is_right()
-            and color(self.sibling) == 0
-            and color(self.sibling.right) == 1
-            and color(self.sibling.left) == 0
+                self.is_right()
+                and color(self.sibling) == 0
+                and color(self.sibling.right) == 1
+                and color(self.sibling.left) == 0
         ):
             self.sibling.rotate_left()
             self.sibling.color = 0
             if self.sibling.left:
                 self.sibling.left.color = 1
         if (
-            self.is_left()
-            and color(self.sibling) == 0
-            and color(self.sibling.right) == 1
+                self.is_left()
+                and color(self.sibling) == 0
+                and color(self.sibling.right) == 1
         ):
             self.parent.rotate_left()
             self.grandparent.color = self.parent.color
             self.parent.color = 0
             self.parent.sibling.color = 0
         if (
-            self.is_right()
-            and color(self.sibling) == 0
-            and color(self.sibling.left) == 1
+                self.is_right()
+                and color(self.sibling) == 0
+                and color(self.sibling.left) == 1
         ):
             self.parent.rotate_right()
             self.grandparent.color = self.parent.color
@@ -600,7 +622,6 @@ def test_insert() -> bool:
     ans.right.right.right = RedBlackTree(12, 1, ans.right.right)
     return tree == ans
 
-
 def test_insert_and_search() -> bool:
     """Tests searching through the tree for values."""
     tree = RedBlackTree(0)
@@ -716,7 +737,7 @@ def pytests() -> None:
     assert test_floor_ceil()
     assert test_tree_traversal()
     assert test_tree_chaining()
-
+    assert test_insert_repair_rotate_right()
 
 def main() -> None:
     """
@@ -737,3 +758,9 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    reached = 0
+    for i in range(16):
+        print("branch nr", i, flags[i])
+        if flags[i]:
+            reached += 1
+    print("total coverage", reached/16*100, "%")
