@@ -112,7 +112,7 @@ The refactoring can be found [here](https://github.com/KarlisKV/Coverage_algorit
 The refactoring decreased the CC from 21 to 9, which gives a 57% decrease.
 
 ### _insert_repair
-
+Karlis Velins
 Plan for refactoring complex code:
 
 * Combining the first two if statements with an elif.
@@ -184,6 +184,7 @@ its output?
 
 #### **_insert_repair**
 
+Karlis Velins
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements. https://github.com/KarlisKV/Coverage_algorithms/blob/17-improve-coverage/data_structures/binary_tree/red_black_tree.py
 
@@ -231,7 +232,7 @@ its output?
    The DIY tool measured a lower coverage than the automated tool (83% vs 93%), because it does not take all branch types into account.
 
 #### **_insert_repair**
-
+Karlis Velins
 1. How detailed is your coverage measurement?
 
 It checks for all if, elif else statements in the function, since those are the only ones that appear for this specific function 
@@ -291,7 +292,7 @@ Number of test cases added: two per team member (P) or at least four (P+).
 Four test cases were added (P+).
 
 ### _insert_repair
-
+Karlis Velins
 Show the comments that describe the requirements for the coverage.
 https://github.com/KarlisKV/Coverage_algorithms/blob/17-improve-coverage/data_structures/binary_tree/red_black_tree.py
 Original coverage has it a 87.5% 
@@ -414,6 +415,10 @@ One of our group members, Olivia Aronsson, was not able to participate in the pr
 * Michaela Mattsson:
 * Maegan Peralta:
 * Karlis Kristofers Velins:
+    * DIY coverage measurement for _insert_repair
+    * Two new test cases for _insert_repair
+    * Plan for refactoring _insert_repair
+    * Going for P
 * Jennifer Larsson: 
    * Manual complexity measurement for `inverse_of_matrix`
    * DIY coverage measurement for `polynom_for_points`
