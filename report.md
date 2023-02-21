@@ -65,6 +65,10 @@ Yes, the project ran as documented without problems.
    * The function is to find a 12-digit number that meets two conditions: 
       1. It is an arithmetic sequence of three prime numbers. 
       2. Each of the three 4-digit numbers is a permutation of each other.
+* bidirectional_dij
+   * The purpose of the function is to find the length of the shortest path by conducting 2 searches, a forward search from the source and a reverse search from the destination
+* next_term
+   * The purpose of the function is to find the difference between the start term and the end term of the array and to find the number of terms jumped 
 
 4. Are exceptions taken into account in the given measurements?
    
