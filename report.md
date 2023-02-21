@@ -132,11 +132,17 @@ Carried out refactoring (optional, P+):
 
 git diff ...
 
-### Function 3
+### bidirectional_dij
+Maegan Chen Peralta
 
 Plan for refactoring complex code:
+* Since there are duplicated code patterns, such as the following pairs of code: 
+   * in lines 74-85 and 88-100, and
+   * in lines 54-62 and 64-71, 
+   we can limit these duplicates by extracting the common bits of code to helper functions. This will also help to improve code readability. 
 
 Estimated impact of refactoring (lower CC, but other drawbacks?).
+* The CC is expected to be lowered and readability should improve. However, two possible drawbacks are that firstly, the length of the code is increased. Secondly, someone reading the code would have to jump between functions when analysing the code as it has been broken down from a large chunk of code. Thankfully, these drawbacks are not major.
 
 Carried out refactoring (optional, P+):
 
