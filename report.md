@@ -66,8 +66,10 @@ Yes, the project ran as documented without problems.
       1. It is an arithmetic sequence of three prime numbers. 
       2. Each of the three 4-digit numbers is a permutation of each other.
 * bidirectional_dij
+Maegan Chen Peralta
    * The purpose of the function is to find the length of the shortest path by conducting 2 searches, a forward search from the source and a reverse search from the destination
 * next_term
+Maegan Chen Peralta
    * The purpose of the function is to find the difference between the start term and the end term of the array and to find the number of terms jumped 
 
 4. Are exceptions taken into account in the given measurements?
@@ -209,7 +211,8 @@ DIY coverage tool can be found [here](https://github.com/KarlisKV/Coverage_algor
 * DIY tool only cover if/ else statement and for/ while loops
 * DIY tool measured a branch coverage of 100% and the automatic tool measure a coverage on 99%, which is more or less identical answer
 
-#### **Function 4**
+### bidirectional_dij
+Maegan Chen Peralta
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements.
 
@@ -251,7 +254,9 @@ The tool requires manual input which makes it very error-prone. For a more compl
 
 I counted 16 branches but as I undestand the CC is the nr. of branches + 1 which is 17 so that matches the 17 that the automated lizard tool produced. For coverage I got 87.5% 
 and the overall class got 79% coverage since it had other methods. My manual tool got a coverage for the existing tests for 87.5% 
-#### **Function 3**
+
+### bidirectional_dij
+Maegan Chen Peralta
 
 1. How detailed is your coverage measurement?
 
@@ -358,7 +363,8 @@ that overlapped with the insert test so when I removed those as you'll see in th
 previously written tests. 
 
 
-### Function 3
+### bidirectional_dij
+Maegan Chen Peralta
 
 Show the comments that describe the requirements for the coverage.
 
@@ -420,6 +426,11 @@ One of our group members, Olivia Aronsson, was not able to participate in the pr
 
 * Michaela Mattsson:
 * Maegan Peralta:
+   * Manual complexity measurement for `bidirectional_dij`
+   * DIY coverage measurement for `bidirectional_dij`
+   * Two new test cases for `bidirectional_dij`
+   * Plan for refactoring `bidirectional_dij`
+   * Going for P
 * Karlis Kristofers Velins:
     * DIY coverage measurement for _insert_repair
     * Two new test cases for _insert_repair
