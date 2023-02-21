@@ -80,9 +80,33 @@ Maegan Chen Peralta
     
    Yes, the documentation is clear and describes all possible outcomes.
 
+### Manual CC calculations
+
+#### **inverse_of_matrix**
+
+*Jennifer Larsson*
+
+The function `inverse_of_matrix` has:
+
+* 2 `if` statements
+* 1 `elif` statement
+* 5 `and` conditions
+* 8 `for` loops
+* 2 `return` statements
+
+which gives a CC of `2 + 1 + 5 + 8 + 2 * 2 = 20`.
+
+#### **Function 2**
+
+#### **Function 3**
+
+#### **Function 4**
+
 ## Refactoring
 
 ### polynom_for_points
+
+*Jennifer Larsson*
 
 Plan for refactoring complex code:
 
@@ -176,6 +200,8 @@ It was easy to use on our project, and was easy to understand and properly docum
 
 #### **polynom_for_points** 
 
+*Jennifer Larsson*
+
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements.
 
@@ -211,7 +237,7 @@ DIY coverage tool can be found [here](https://github.com/KarlisKV/Coverage_algor
 * DIY tool only cover if/ else statement and for/ while loops
 * DIY tool measured a branch coverage of 100% and the automatic tool measure a coverage on 99%, which is more or less identical answer
 
-### bidirectional_dij
+#### **bidirectional_dij**
 Maegan Chen Peralta
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements.
@@ -227,6 +253,8 @@ its output?
 ### Evaluation
 
 #### **polynom_for_points**
+
+*Jennifer Larsson*
 
 1. How detailed is your coverage measurement?
 
@@ -255,7 +283,7 @@ The tool requires manual input which makes it very error-prone. For a more compl
 I counted 16 branches but as I undestand the CC is the nr. of branches + 1 which is 17 so that matches the 17 that the automated lizard tool produced. For coverage I got 87.5% 
 and the overall class got 79% coverage since it had other methods. My manual tool got a coverage for the existing tests for 87.5% 
 
-### bidirectional_dij
+#### **bidirectional_dij**
 Maegan Chen Peralta
 
 1. How detailed is your coverage measurement?
@@ -275,6 +303,8 @@ Maegan Chen Peralta
 ## Coverage improvement
 
 ### polynom_for_points
+
+*Jennifer Larsson*
 
 Show the comments that describe the requirements for the coverage.
 
