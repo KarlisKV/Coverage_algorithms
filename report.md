@@ -185,7 +185,7 @@ its output?
 #### **_insert_repair**
 
 Show a patch (or link to a branch) that shows the instrumented code to
-gather coverage measurements.
+gather coverage measurements. https://github.com/KarlisKV/Coverage_algorithms/blob/17-improve-coverage/data_structures/binary_tree/red_black_tree.py
 
 The patch is probably too long to be copied here, so please add
 the git command that is used to obtain the patch instead:
