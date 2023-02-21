@@ -195,17 +195,12 @@ git diff ...
 What kinds of constructs does your tool support, and how accurate is
 its output?
 
-#### **Function 3**
-Show a patch (or link to a branch) that shows the instrumented code to
-gather coverage measurements.
+#### **Solution**
+DIY coverage tool can be found [here](https://github.com/KarlisKV/Coverage_algorithms/blob/complex_func_solution/project_euler/problem_049/sol1.py)
 
-The patch is probably too long to be copied here, so please add
-the git command that is used to obtain the patch instead:
-
-git diff ...
-
-What kinds of constructs does your tool support, and how accurate is
-its output?
+* DIY tool does not take into account ternary operators
+* DIY tool only cover if/ else statement and for/ while loops
+* DIY tool measured a branch coverage of 100% and the automatic tool measure a coverage on 99%, which is more or less identical answer
 
 #### **Function 4**
 Show a patch (or link to a branch) that shows the instrumented code to
