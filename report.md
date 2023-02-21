@@ -426,27 +426,31 @@ Number of test cases added: two per team member (P) or at least four (P+).
 
 1. Current state according to the Essence standard: 
 
-   The group is currently in the state in place according to the Essence standard.
+   We are currently in the state *in use* according to the Essence standard. The principles and the foundation for the project have been established, and all group members are doing the required work. The practices and tools are being used in way that's appropriate for our project. However, we are using these tools in different ways and have not really established a common standard. For example, we have different practices for commit messages and branch naming. Furthermore, we have not taken the time to reflect upon our way of working until now, which would be good to do more often in order to reach the next state.
+
+   The Essence way-of-working checklist can be found [here](https://docs.google.com/document/d/1R_0vUgGhzLNsjyxDPkSuWPGTFEUH8FV4r0b6I9HtQkE/edit?usp=sharing).
 
 2. Was the self-assessment unanimous? Any doubts about certain items?
 
-   Yes, the self-assesment was unanimous
+   Yes, all group members agreed on which criterias the group fulfilled in the Essence checklist.
 
 3. How have you improved so far?
 
-   The group was formed and its way of working was established. Since this is the first project in the new group, there has not been much improvement yet. 
+   The group was formed and we all got in contact with each other. After that, we agreed on our meeting structure, how the work should be divided and which tools/languages/practices we should use. So we have established our way-of-working and everyone is making progress on the lab. However, since this is the first project in the new group, we have not had time to reflect and update our way-of-working. So there are more improvements to make.
 
 4. Where is potential for improvement?
 
-   The group could improve by working on their communication and team chemistry. 
+   We have established our meeting structure, however our communication is not perfect yet. So there is potential for improving how we communicate and give feedback to each other, as the work so far has been quite individual. Another aspect we could work on is the team chemistry, as we only have meetings online and it's difficult to get to know each other over a screen. We could also work on establishing a mutual way of using our tools, such as Github, so that everyone in the group uses the tool in the same way.
 
 ## Overall experience
 
 What are your main take-aways from this project? What did you learn?
-In this project, we learned 
-* how to use automated coverage tool as well as building our own
-* why complexity and coverage is importand and how to deal with these concepts
-* how to count the cyclomatic complexity
+In this project, we have learned 
+* How to use automated coverage tool as well as building our own
+* Why complexity and coverage is important and how to practically deal with these concepts
+* How to calculate the cyclomatic complexity of a function
+* How to enhance a test suite in order to get better coverage.
+* How to refactor a function in order to decrease the cyclomatic complexity.
 
 Is there something special you want to mention here?
 
