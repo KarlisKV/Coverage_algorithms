@@ -435,12 +435,41 @@ Maegan Chen Peralta
 Show the comments that describe the requirements for the coverage.
 
 Report of old coverage: [https://github.com/KarlisKV/Coverage_algorithms/blob/master/graphs/bi_directional_dijkstra.py]
-Original coverage: 62.3%
+* DIY tool: 
+branch nr 0 False
+branch nr 1 True
+branch nr 2 True
+branch nr 3 True
+branch nr 4 True
+branch nr 5 True
+branch nr 6 True
+branch nr 7 False
+branch nr 8 True
+branch nr 9 True
+branch nr 10 True
+branch nr 11 False
+branch nr 12 True
+branch nr 13 True
+branch nr 14 True
+branch nr 15 True
+original coverage 81.25 %
+
+* Automated tool: 
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+bi_directional_dijkstra.py      65      5    92%
+------------------------------------------------
+TOTAL                           65      5    92%
 
 Report of new coverage: [https://github.com/KarlisKV/Coverage_algorithms/blob/21-coverage-improvement-bidir-dij/graphs/bi_directional_dijkstra.py]
 New coverage: 
+* DIY tool: 
 
-Test cases added:
+* Automated tool: 
+
+Test cases added: 
+1. Check whether condition 7 can be reached 
+2. Check whether condition 11 can be reached 
 
 git diff ...
 
