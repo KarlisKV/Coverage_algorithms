@@ -301,14 +301,17 @@ The tool requires manual input which makes it very error-prone. For a more compl
 I counted 16 branches but as I undestand the CC is the nr. of branches + 1 which is 17 so that matches the 17 that the automated lizard tool produced. For coverage I got 87.5% 
 and the overall class got 79% coverage since it had other methods. My manual tool got a coverage for the existing tests for 87.5% 
 
-#### **bidirectional_dij**
+### bidirectional_dij
 Maegan Chen Peralta
 
 1. How detailed is your coverage measurement?
+* It checks for all if, elif else statements in the function, since these create the branches, which then calculates the percentage. 
 
 2. What are the limitations of your own tool?
+* My tool is limited by manual input, which is both prone to human error and static, such that potential new branches will not be taken into account. 
 
 3. Are the results of your tool consistent with existing coverage tools?
+* No, my DIY tool calculated a significantly lower coverage than the automated tool. 
 
 #### **Solution**
 Michaela Mattsson
