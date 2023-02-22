@@ -226,7 +226,7 @@ git diff ...
 What kinds of constructs does your tool support, and how accurate is
 its output?
 * The DIY tool supports if/else statements and for/while loops
-* The DIY tool measured a branch coverage of 64.3% and the automated tool measured a coverage of xx%
+* The DIY tool measured a branch coverage of 64.3% and the automated tool measured a coverage of 92%%, which is very different. 
 
 ### Evaluation
 
@@ -263,10 +263,13 @@ and the overall class got 79% coverage since it had other methods. My manual too
 Maegan Chen Peralta
 
 1. How detailed is your coverage measurement?
+* It checks for all if, elif else statements in the function, since these create the branches, which then calculates the percentage. 
 
 2. What are the limitations of your own tool?
+* My tool is limited by manual input, which is both prone to human error and static, such that potential new branches will not be taken into account. 
 
 3. Are the results of your tool consistent with existing coverage tools?
+* No, my DIY tool calculated a significantly lower coverage than the automated tool. 
 
 #### **Function 4**
 
