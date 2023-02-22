@@ -297,13 +297,16 @@ Maegan Chen Peralta
 
 3. Are the results of your tool consistent with existing coverage tools?
 
-#### **Function 4**
-
+#### **Solution**
+Michaela Mattsson
 1. How detailed is your coverage measurement?
+it only checks which branches were taken  and print out the percentage result of these
 
 2. What are the limitations of your own tool?
+it is very simple and and hard-coded which makes it naive for extending the function
 
 3. Are the results of your tool consistent with existing coverage tools?
+Yes,tool measured a branch coverage of 100% and the automatic tool measure a coverage on 99%
 
 ## Coverage improvement
 
