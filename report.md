@@ -441,30 +441,18 @@ branch nr 1 True
 branch nr 2 True
 branch nr 3 True
 branch nr 4 True
-branch nr 5 False
+branch nr 5 True
 branch nr 6 True
-branch nr 7 True
-branch nr 8 False
-branch nr 9 False
+branch nr 7 False
+branch nr 8 True
+branch nr 9 True
 branch nr 10 True
-branch nr 11 True
-branch nr 12 False
+branch nr 11 False
+branch nr 12 True
 branch nr 13 True
 branch nr 14 True
-branch nr 15 False
-branch nr 16 True
-branch nr 17 False
-branch nr 18 True
-branch nr 19 True
-branch nr 20 False
-branch nr 21 True
-branch nr 22 False
-branch nr 23 True
-branch nr 24 True
-branch nr 25 True
-branch nr 26 True
-branch nr 27 False
-Original coverage: 62.3%
+branch nr 15 True
+original coverage 81.25 %
 
 * Automated tool: 
 Name                         Stmts   Miss  Cover
@@ -479,7 +467,9 @@ New coverage:
 
 * Automated tool: 
 
-Test cases added:
+Test cases added: 
+1. Check whether condition 7 can be reached 
+2. Check whether condition 11 can be reached 
 
 git diff ...
 
