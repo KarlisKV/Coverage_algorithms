@@ -107,7 +107,16 @@ The function `solution` has:
 
 CC = `8+1+10+1=20`
 
-#### **Function 3**
+### bidirectional_dij
+Maegan Chen Peralta
+
+The function `bidirectional_dij` has:
+* 12 `if` statements
+* 1 `and` conditions
+* 2 `for` loops
+* 2 `return` statements
+
+CC = `12 + 1 + 2 * 2 = 17`
 
 #### **Function 4**
 
@@ -425,9 +434,11 @@ previously written tests.
 Maegan Chen Peralta
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+Report of old coverage: [https://github.com/KarlisKV/Coverage_algorithms/blob/master/graphs/bi_directional_dijkstra.py]
+Original coverage: 62.3%
 
-Report of new coverage: [link]
+Report of new coverage: [https://github.com/KarlisKV/Coverage_algorithms/blob/21-coverage-improvement-bidir-dij/graphs/bi_directional_dijkstra.py]
+New coverage: 
 
 Test cases added:
 
