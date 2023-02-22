@@ -182,7 +182,7 @@ a smart way to reduce CC is to divide the function into smaller functions. An ex
 * helper function to get the word representation of a number
 * helper function to convert a number to words
 
-Estimated impact of refactoring (lower CC, but other drawbacks?).
+Although the CC would likely decrease, dividing the problem may not necessarily simplify understanding. However, using descriptive function names could make the code slightly easier to follow
 
 Carried out refactoring (optional, P+):
 
@@ -300,12 +300,16 @@ Maegan Chen Peralta
 #### **Solution**
 Michaela Mattsson
 1. How detailed is your coverage measurement?
+
 it only checks which branches were taken  and print out the percentage result of these
 
 2. What are the limitations of your own tool?
+
+
 it is very simple and and hard-coded which makes it naive for extending the function
 
 3. Are the results of your tool consistent with existing coverage tools?
+
 Yes,tool measured a branch coverage of 100% and the automatic tool measure a coverage on 99%
 
 ## Coverage improvement
@@ -406,18 +410,19 @@ Maegan Chen Peralta
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+Report of old coverage: [link](https://github.com/KarlisKV/Coverage_algorithms/blob/master/web_programming/convert_number_to_words.py)
+Original coverage: 79%
 
-Report of new coverage: [link]
-
-Test cases added:
+Report of new coverage: [link](https://github.com/KarlisKV/Coverage_algorithms/blob/coverage-improvement-convert-num/web_programming/convert_number_to_words.py)
+New coverage: 98% 
+Test cases added: line 9-21 se [here](https://github.com/KarlisKV/Coverage_algorithms/blob/coverage-improvement-convert-num/web_programming/convert_number_to_words.py)
 
 git diff ...
 
 Number of test cases added: two per team member (P) or at least four (P+).
 
-### Function 4
-
+### Convert 4
+Michaela Matsson
 Show the comments that describe the requirements for the coverage.
 
 Report of old coverage: [link]
