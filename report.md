@@ -96,7 +96,16 @@ The function `inverse_of_matrix` has:
 
 which gives a CC of `2 + 1 + 5 + 8 + 2 * 2 = 20`.
 
-#### **Function 2**
+#### **Solution**
+*Michaela Mattsson*
+
+The function `solution` has:
+* 8 `if` statements
+* 1 `and` conditions
+* 10 `for` loops
+* 1 `return` statements
+
+CC = `8+1+10+1=20`
 
 #### **Function 3**
 
@@ -407,22 +416,6 @@ previously written tests.
 
 ### bidirectional_dij
 Maegan Chen Peralta
-
-Show the comments that describe the requirements for the coverage.
-
-Report of old coverage: [link](https://github.com/KarlisKV/Coverage_algorithms/blob/master/web_programming/convert_number_to_words.py)
-Original coverage: 79%
-
-Report of new coverage: [link](https://github.com/KarlisKV/Coverage_algorithms/blob/coverage-improvement-convert-num/web_programming/convert_number_to_words.py)
-New coverage: 98% 
-Test cases added: line 9-21 se [here](https://github.com/KarlisKV/Coverage_algorithms/blob/coverage-improvement-convert-num/web_programming/convert_number_to_words.py)
-
-git diff ...
-
-Number of test cases added: two per team member (P) or at least four (P+).
-
-### Convert 4
-Michaela Matsson
 Show the comments that describe the requirements for the coverage.
 
 Report of old coverage: [link]
@@ -434,6 +427,17 @@ Test cases added:
 git diff ...
 
 Number of test cases added: two per team member (P) or at least four (P+).
+
+### Convert 4
+Michaela Matsson
+Show the comments that describe the requirements for the coverage.
+
+Report of old coverage: [link](https://github.com/KarlisKV/Coverage_algorithms/blob/master/web_programming/convert_number_to_words.py)
+Original coverage: 79%
+
+Report of new coverage: [link](https://github.com/KarlisKV/Coverage_algorithms/blob/coverage-improvement-convert-num/web_programming/convert_number_to_words.py)
+New coverage: 98% 
+Test cases added: line 9-21 se [here](https://github.com/KarlisKV/Coverage_algorithms/blob/coverage-improvement-convert-num/web_programming/convert_number_to_words.py)
 
 ## Self-assessment: Way of working
 
