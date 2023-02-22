@@ -7,7 +7,17 @@ def convert(number: int) -> str:
 
     >>> convert(123)
     'OneHundred,TwentyThree'
+    >>> convert(0)
+    'Zero'
+    >>> convert(18)
+    'Eighteen'
+    >>> convert(1000)
+    'OneThousand,'
+    >>> convert(10000000)
+    'OneCrore,'
     """
+    
+
     if number == 0:
         words = "Zero"
         return words
@@ -100,6 +110,7 @@ def convert(number: int) -> str:
                         counter += 1
                     else:
                         words = singles[current] + addition + words
+                       
             counter += 1
             temp_num = temp_num // 10
     return words
@@ -108,4 +119,4 @@ def convert(number: int) -> str:
 if __name__ == "__main__":
     import doctest
 
-    doctest.testmod()
+    doctest.testmod(verbose=True)
