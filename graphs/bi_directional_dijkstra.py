@@ -16,7 +16,7 @@ from typing import Any
 
 import numpy as np
 
-flags = [False]*28
+flags = [False]*16
 
 def set_flag(i):
     flags[i] = True
@@ -68,22 +68,18 @@ def bidirectional_dij(
             if v_fwd not in visited_forward:
                 set_flag(4)
                 break
-            else:
-                set_flag(5)
 
         else:
             break
         visited_forward.add(v_fwd)
 
         while not queue_backward.empty():
-            set_flag(6)
+            set_flag(5)
             _, v_bwd = queue_backward.get()
 
             if v_bwd not in visited_backward:
-                set_flag(7)
+                set_flag(6)
                 break
-            else:
-                set_flag(8)
 
         else:
             break
@@ -92,68 +88,49 @@ def bidirectional_dij(
         # forward pass and relaxation
         for nxt_fwd, d_forward in graph_forward[v_fwd]:
             if nxt_fwd in visited_forward:
-                set_flag(9)
+                set_flag(7)
                 continue
-            else:
-                set_flag(10)
 
             old_cost_f = cst_fwd.get(nxt_fwd, np.inf)
             new_cost_f = cst_fwd[v_fwd] + d_forward
             if new_cost_f < old_cost_f:
-                set_flag(11)
+                set_flag(8)
                 queue_forward.put((new_cost_f, nxt_fwd))
                 cst_fwd[nxt_fwd] = new_cost_f
                 parent_forward[nxt_fwd] = v_fwd
-            else:
-                set_flag(12)
 
             if nxt_fwd in visited_backward:
-                set_flag(13)
+                set_flag(9)
                 if cst_fwd[v_fwd] + d_forward + cst_bwd[nxt_fwd] < shortest_distance:
-                    set_flag(14)
+                    set_flag(10)
                     shortest_distance = cst_fwd[v_fwd] + d_forward + cst_bwd[nxt_fwd]
-                else:
-                    set_flag(15)
-            else:
-                set_flag(16)
 
         # backward pass and relaxation
         for nxt_bwd, d_backward in graph_backward[v_bwd]:
             if nxt_bwd in visited_backward:
-                set_flag(17)
+                set_flag(11)
                 continue
-            else:
-                set_flag(18)
+
             old_cost_b = cst_bwd.get(nxt_bwd, np.inf)
             new_cost_b = cst_bwd[v_bwd] + d_backward
             if new_cost_b < old_cost_b:
-                set_flag(19)
+                set_flag(12)
                 queue_backward.put((new_cost_b, nxt_bwd))
                 cst_bwd[nxt_bwd] = new_cost_b
                 parent_backward[nxt_bwd] = v_bwd
-            else:
-                set_flag(20)
 
             if nxt_bwd in visited_forward:
-                set_flag(21)
+                set_flag(13)
                 if cst_bwd[v_bwd] + d_backward + cst_fwd[nxt_bwd] < shortest_distance:
                     shortest_distance = cst_bwd[v_bwd] + d_backward + cst_fwd[nxt_bwd]
-                else:
-                    set_flag(22)
-            else:
-                set_flag(23)
 
         if cst_fwd[v_fwd] + cst_bwd[v_bwd] >= shortest_distance:
-            set_flag(24)
+            set_flag(14)
             break
-        else:
-            set_flag(25)
 
     if shortest_distance != np.inf:
-        set_flag(26)
+        set_flag(15)
         shortest_path_distance = shortest_distance
-    else:
-        set_flag(27)
 
     return shortest_path_distance
 
@@ -180,8 +157,8 @@ if __name__ == "__main__":
 
     doctest.testmod()
     reached = 0
-    for i in range(28):
+    for i in range(16):
         print("branch nr", i, flags[i])
         if flags[i]:
             reached += 1
-    print("total coverage", reached / 28 * 100, "%")
+    print("total coverage", reached / 16 * 100, "%")
