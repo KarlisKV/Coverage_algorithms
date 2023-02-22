@@ -4,7 +4,6 @@ import math
 def convert(number: int) -> str:
     """
     Given a number return the number in words.
-
     >>> convert(123)
     'OneHundred,TwentyThree'
     >>> convert(0)
@@ -15,9 +14,11 @@ def convert(number: int) -> str:
     'OneThousand,'
     >>> convert(10000000)
     'OneCrore,'
+    >>> convert(15)
+    'Eleven'
+    >>> convert(120121215)
+    'OneHundred,wenty,lakh,twentyOne,TwoHundred Fifteen'
     """
-    
-
     if number == 0:
         words = "Zero"
         return words
@@ -105,6 +106,7 @@ def convert(number: int) -> str:
                         else:
                             addition = placevalue[counter]
                     if ((temp_num % 100) // 10) == 1:
+                        print("Ta test")
                         words = teens[current] + addition + words
                         temp_num = temp_num // 10
                         counter += 1
