@@ -226,7 +226,7 @@ git diff ...
 What kinds of constructs does your tool support, and how accurate is
 its output?
 * The DIY tool supports if/else statements and for/while loops
-* The DIY tool measured a branch coverage of xxx% and the automated tool measured a coverage of xx%
+* The DIY tool measured a branch coverage of 64.3% and the automated tool measured a coverage of xx%
 
 ### Evaluation
 
