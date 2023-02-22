@@ -213,8 +213,10 @@ DIY coverage tool can be found [here](https://github.com/KarlisKV/Coverage_algor
 
 ### bidirectional_dij
 Maegan Chen Peralta
+
 Show a patch (or link to a branch) that shows the instrumented code to
 gather coverage measurements.
+* https://github.com/KarlisKV/Coverage_algorithms/blob/20-coverage-measurement--bidir-dij/graphs/bi_directional_dijkstra.py
 
 The patch is probably too long to be copied here, so please add
 the git command that is used to obtain the patch instead:
@@ -223,6 +225,8 @@ git diff ...
 
 What kinds of constructs does your tool support, and how accurate is
 its output?
+* The DIY tool supports if/else statements and for/while loops
+* The DIY tool measured a branch coverage of xxx% and the automated tool measured a coverage of xx%
 
 ### Evaluation
 
