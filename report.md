@@ -174,9 +174,13 @@ Carried out refactoring (optional, P+):
 
 git diff ...
 
-### Function 4
-
-Plan for refactoring complex code:
+### Convert 
+Michaela Mattsson
+a smart way to reduce CC is to divide the function into smaller functions. An example of that for the Convert function is for example
+* helper function to get the digit at a given place value
+* helper function to get the word representation of a number less than 100
+* helper function to get the word representation of a number
+* helper function to convert a number to words
 
 Estimated impact of refactoring (lower CC, but other drawbacks?).
 
@@ -231,6 +235,7 @@ What kinds of constructs does your tool support, and how accurate is
 its output?
 
 #### **Solution**
+Michaela Mattsson
 DIY coverage tool can be found [here](https://github.com/KarlisKV/Coverage_algorithms/blob/complex_func_solution/project_euler/problem_049/sol1.py)
 
 * DIY tool does not take into account ternary operators
@@ -459,6 +464,11 @@ One of our group members, Olivia Aronsson, was not able to participate in the pr
 ## Statement of contributions
 
 * Michaela Mattsson:
+   * Manual complexity measurement for `Solution`
+   * DIY coverage measurement for `Solution`
+   * Two new test cases for `Convert`
+   * Plan for refactoring `Convert`
+   * Going for P
 * Maegan Peralta:
    * Manual complexity measurement for `bidirectional_dij`
    * DIY coverage measurement for `bidirectional_dij`
