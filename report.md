@@ -120,11 +120,12 @@ CC = `12 + 1 + 2 * 2 = 17`
 
 #### _insert_repair
 Karlis Kristofers Velins
-* 15 if statements
-* 1 `elif` statement
+* 10 `if` statements
+* 3 `elif` statements
+* 3 `else` statements
 * 1 `return` statements
 
-CC = 15 + 1 = 16
+CC = 10 + 3 + 3 + 1 = 17
 
 ## Refactoring
 
