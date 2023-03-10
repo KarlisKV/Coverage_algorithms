@@ -129,6 +129,26 @@ def bidirectional_dij(
 
     return shortest_path_distance
 
+def test_bidirectional_dij():
+    # New test case to reach branches 0, 7 and 11
+    # The algorithm should find the shortest path from node "A" to node "E" with a distance of 8. This should execute branch 0 since the source and destination nodes are not the same. During the algorithm, the path should go through node "D" both forward and backward, which should execute branches 7 and 11 respectively.
+    graph_fwd = {
+        "A": [["B", 2], ["C", 3]],
+        "B": [["D", 1]],
+        "C": [["D", 2]],
+        "D": [["E", 3]],
+        "E": []
+    }
+
+    graph_bwd = {
+        "A": [[None, np.inf]],
+        "B": [["A", 2]],
+        "C": [["A", 3]],
+        "D": [["B", 1], ["C", 2]],
+        "E": [["D", 3]]
+    }
+
+    assert bidirectional_dij("A", "E", graph_fwd, graph_bwd) == 8
 
 graph_fwd = {
     "B": [["C", 1]],
