@@ -469,14 +469,12 @@ bi_directional_dijkstra.py      65      5    92%
 TOTAL                           65      5    92%
 
 Report of new coverage: [https://github.com/KarlisKV/Coverage_algorithms/blob/21-coverage-improvement-bidir-dij/graphs/bi_directional_dijkstra.py]
-New coverage: 
-* DIY tool: 
 
-* Automated tool: 
 
 Test cases added: 
-1. Check whether condition 7 can be reached 
-2. Check whether condition 11 can be reached 
+1. Check whether condition 0 can be reached 
+2. Check whether condition 7 can be reached 
+3. Check whether condition 11 can be reached 
 
 git diff ...
 
